@@ -1,34 +1,36 @@
 {
-  "name": "nextjs-cdn",
-  "version": "0.1.0",
-  "private": true,
-  "buildID": "152fbea0-f27c-41be-8930-cba2bcf3fd42",
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "prebuild": "tsx -r dotenv/config --no-warnings ./scripts/prebuild.ts",
-    "build": "next build",
-    "postbuild": "tsx -r dotenv/config --no-warnings ./scripts/postbuild.ts",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.804.0",
-    "dotenv": "^16.5.0",
-    "envalid": "^8.0.0",
-    "mime-types": "^3.0.1",
-    "next": "15.3.2",
-    "next-intl": "^4.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tsx": "^4.19.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/mime-types": "^2.1.4",
-    "@types/node": "^20.17.43",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "nextjs-cdn",
+	"version": "0.1.0",
+	"private": true,
+	"buildID": "7f311587-296b-4353-bd13-c2192acf14ea",
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"prebuild": "tsx -r dotenv/config --no-warnings ./scripts/prebuild.ts",
+		"build": "next build",
+		"postbuild": "tsx -r dotenv/config --no-warnings ./scripts/postbuild.ts",
+		"upload-assets:all": "tsx -r dotenv/config --no-warnings ./scripts/upload-assets.ts all",
+		"upload-assets:sync": "tsx -r dotenv/config --no-warnings ./scripts/upload-assets.ts sync",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.804.0",
+		"dotenv": "^16.5.0",
+		"envalid": "^8.0.0",
+		"mime-types": "^3.0.1",
+		"next": "15.3.2",
+		"next-intl": "^4.1.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"tsx": "^4.19.4"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4",
+		"@types/mime-types": "^2.1.4",
+		"@types/node": "^20.17.43",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"tailwindcss": "^4",
+		"typescript": "^5"
+	}
 }

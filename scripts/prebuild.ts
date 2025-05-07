@@ -1,21 +1,8 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DeleteObjectsCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import currentInfo from "../package.json";
 import { env, s3Client } from "./constants";
-import { execSync } from "node:child_process";
-
-function getChangedFiles() {
-	try {
-		const output = execSync(
-			"git diff --name-only origin/main HEAD -- public/",
-		).toString();
-		return output.split("\n").filter((f) => f.trim() !== "" && existsSync(f));
-	} catch (error) {
-		console.error("❌ Gagal mengambil file yang berubah:", String(error));
-		return [];
-	}
-}
 
 async function deleteS3Folder() {
 	const listParams = {
@@ -67,13 +54,11 @@ async function main() {
 	}
 }
 
-// main()
-// 	.then(() => {
-// 		console.log("Prebuild process completed successfully.");
-// 	})
-// 	.catch((error) => {
-// 		console.error("Error during prebuild process:", error);
-// 		process.exit(1);
-// 	});
-
-console.log(getChangedFiles());
+main()
+	.then(() => {
+		console.log("Prebuild process completed successfully.");
+	})
+	.catch((error) => {
+		console.error("Error during prebuild process:", error);
+		process.exit(1);
+	});
