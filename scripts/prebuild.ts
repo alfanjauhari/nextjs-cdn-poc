@@ -8,7 +8,7 @@ import { execSync } from "node:child_process";
 function getChangedFiles() {
 	try {
 		const output = execSync(
-			"git diff --name-only HEAD~1 HEAD -- public/",
+			"git diff --name-only origin/main HEAD -- public/",
 		).toString();
 		return output.split("\n").filter((f) => f.trim() !== "" && existsSync(f));
 	} catch (error) {
