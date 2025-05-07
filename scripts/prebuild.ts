@@ -37,7 +37,7 @@ async function deleteS3Folder() {
 function updateBuildID() {
 	const packageJsonPath = join(__dirname, "../package.json");
 	const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-	const buildID = crypto.randomUUID();
+	const buildID = Buffer.from(Date.now().toString()).toString("base64url");
 	packageJson.buildID = buildID;
 	writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), "utf-8");
 
